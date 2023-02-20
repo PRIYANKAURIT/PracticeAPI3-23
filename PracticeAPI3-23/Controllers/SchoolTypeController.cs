@@ -18,7 +18,7 @@ namespace PracticeAPI3_23.Controllers
             this.schoolTypeRepository = schoolTypeRepo;
         }
 
-
+        BaseResponseStatus baseResponseStatus = new BaseResponseStatus();
         [HttpGet("GetAllSchoolType")]
          public async Task<ActionResult> GetAllSchoolType()
          {
@@ -61,7 +61,7 @@ namespace PracticeAPI3_23.Controllers
         [HttpPost("Add")]
         public async Task<IActionResult> Add(SchoolTypeModel schoolType)
         {
-            BaseResponseStatus baseResponseStatus = new BaseResponseStatus();
+            
             logger.LogDebug(String.Format($"SchoolTypeController-Add:Calling By Add action."));
             if (schoolTypeRepository != null)
             {
@@ -133,7 +133,7 @@ namespace PracticeAPI3_23.Controllers
                 }
                 else
                 {
-                    var rtnmsg1 = string.Format("Error while Adding");
+                    var rtnmsg1 = string.Format("Error while Updating");
                     logger.LogError(rtnmsg1);
                     baseResponseStatus.StatusCode = StatusCodes.Status409Conflict.ToString();
                     baseResponseStatus.StatusMessage = rtnmsg1;
